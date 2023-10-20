@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace LMS.Domen.Entities
+﻿namespace LMS.Domen.Entities
 {
-    internal class Teacher
+    public class Teacher
     {
     }
 }
