@@ -9,5 +9,6 @@
         public Guid CourseId { get; set; }
 
         public Course? Course { get; set;}
+        public ICollection<NB>? NBs { get; set; }
     }
 }

@@ -9,5 +9,6 @@
 
         public Teacher? Teacher { get; set;}
         public Subject? Subject { get; set; }
+        public ICollection<Lesson>? Lessons { get; set; }
     }
 }
