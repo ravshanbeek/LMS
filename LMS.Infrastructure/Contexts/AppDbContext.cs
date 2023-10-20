@@ -1,6 +1,4 @@
-﻿using LMS.Infrastructure.Configurations;
-using Microsoft.EntityFrameworkCore;
-using System.Data.Common;
+﻿using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 
 namespace LMS.Infrastructure.Contexts;
