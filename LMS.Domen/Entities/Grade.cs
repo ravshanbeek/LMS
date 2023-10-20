@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace LMS.Domen.Entities
+﻿namespace LMS.Domen.Entities
 {
-    internal class Grade
+    public class Grade
     {
+        public Guid Id { get; set; }
+        public float GradeValue { get; set; }
+        public Guid DedlineId { get; set; }
+        public Guid StudentId { get; set; }
+
+        public Deadline? Deadline { get; set; }
+        public Student? Student { get; set; }
     }
 }
