@@ -1,12 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace LMS.Domen.Entities
+﻿namespace LMS.Domen.Entities
 {
-    internal class Lesson
+    public class Lesson
     {
+        public Guid Id { get; set; }
+        public string Name { get; set; }
+        public string Lecture { get; set; }
+        public DateTime Date { get; set; }
+        public Guid CourseId { get; set; }
+
+        public Course? Course { get; set;}
+        public ICollection<NB>? NBs { get; set; }
     }
 }

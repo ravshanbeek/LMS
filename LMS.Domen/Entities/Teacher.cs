@@ -1,12 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace LMS.Domen.Entities
+﻿namespace LMS.Domen.Entities
 {
-    internal class Teacher
+    public class Teacher
     {
+        public Guid Id { get; set; }
+        public string FullName { get; set; }
+        public DateTime Birthdate { get; set; }
+        public Gender? Gender { get; set; }
+        public string Address { get; set; }
+        public string AddressTemporary { get; set; }
+
+        public ICollection<Course>? Courses { get; set; }
     }
 }
