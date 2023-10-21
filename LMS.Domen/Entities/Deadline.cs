@@ -11,7 +11,7 @@
         /// </summary>
         public DateTime ExpiredDate { get; set; }
         
-        public DateTime CreatedDate { get; set; } = DateTime.Now;
+        public DateTime CreatedDate { get; set; }
 
         public ICollection<Grade>? Grades { get; set; }
     }
