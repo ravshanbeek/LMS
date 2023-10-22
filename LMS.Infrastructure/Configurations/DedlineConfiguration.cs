@@ -24,7 +24,9 @@ namespace LMS.Infrastructure.Configurations
                 .IsRequired();
 
             builder.HasMany(dedline => dedline.Grades)
-                .WithOne(grade => grade.Deadline);
+                .WithOne(grade => grade.Deadline)
+                .HasForeignKey(grade => grade.DedlineId)
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

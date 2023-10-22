@@ -9,14 +9,10 @@ public static class ServiceCollectionExtentions
         this IServiceCollection services,
         IConfiguration configuration)
     {
-        var connectionString = configuration.GetConnectionString("SqlServer");
-
-        
-        //services.AddSwaggerService();
-
         services.AddDbContextPool<AppDbContext>(options =>
         {
-            options.UseSqlite(connectionString);
+            //options.UseSqlite(configuration.GetConnectionString("SqlLite"));
+            options.UseSqlServer(configuration.GetConnectionString("SqlServer"));
         });
 
         return services;

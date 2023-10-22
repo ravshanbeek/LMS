@@ -13,15 +13,14 @@ namespace LMS.Infrastructure.Configurations
             builder.Property(lesson => lesson.Name)
                 .IsRequired()
                 .HasMaxLength(100);
-            
-            builder.Property(lesson => lesson.CourseId)
-                .IsRequired();
 
             builder.Property(lesson => lesson.Date)
                 .IsRequired();
 
             builder.HasMany(lesson => lesson.NBs)
-                .WithOne(nb => nb.Lesson);
+                .WithOne(nb => nb.Lesson)
+                .HasForeignKey(nb => nb.LessonId)
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

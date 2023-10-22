@@ -20,9 +20,6 @@ namespace LMS.Infrastructure.Configurations
             builder.Property(student => student.Address)
                 .IsRequired()
                 .HasMaxLength(100);
-
-            builder.Property(student => student.GroupId)
-                .IsRequired();
         }
     }
 }

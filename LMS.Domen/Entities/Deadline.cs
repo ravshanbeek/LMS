@@ -10,9 +10,10 @@
         /// StartDate dan malum vaqt o'tadi 24 soat yoki 48,96
         /// </summary>
         public DateTime ExpiredDate { get; set; }
-        
         public DateTime CreatedDate { get; set; }
+        public Guid CourseId { get; set; }
 
+        public Course? Course { get; set; }
         public ICollection<Grade>? Grades { get; set; }
     }
 }

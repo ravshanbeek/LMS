@@ -12,12 +12,6 @@ namespace LMS.Infrastructure.Configurations
 
             builder.Property(nb => nb.IsAvailable)
                 .HasDefaultValue(true);
-
-            builder.Property(nb => nb.LessonId)
-                .IsRequired();
-
-            builder.Property(nb => nb.StudentId)
-                .IsRequired();
         }
     }
 }
