@@ -18,11 +18,8 @@ public class GroupConfiguration : IEntityTypeConfiguration<Group>
             .HasDefaultValue(1);
 
         builder.HasMany(group => group.Students)
-            .WithOne()
+            .WithOne(student => student.Group)
             .HasForeignKey(student => student.GroupId)
-            .OnDelete(DeleteBehavior.SetNull);
-
-        builder.HasMany(group => group.Courses)
-            .WithMany();
+            .OnDelete(DeleteBehavior.Cascade);
     }
 }

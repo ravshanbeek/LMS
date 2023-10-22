@@ -13,12 +13,6 @@ namespace LMS.Infrastructure.Configurations
             builder.Property(grade => grade.GradeValue)
                 .IsRequired()
                 .HasDefaultValue(0);
-
-            builder.Property(grade => grade.DedlineId)
-                .IsRequired();
-
-            builder.Property(grade => grade.StudentId)
-                .IsRequired();
         }
     }
 }

@@ -27,7 +27,8 @@ namespace LMS.Infrastructure.Configurations
 
             builder.HasMany(teacher => teacher.Courses)
                .WithOne(course => course.Teacher)
-               .OnDelete(DeleteBehavior.SetNull);
+               .HasForeignKey(course => course.TeacherId)
+               .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }
