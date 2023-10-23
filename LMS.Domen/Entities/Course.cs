@@ -2,9 +2,8 @@
 
 namespace LMS.Domen.Entities
 {
-    public class Course
+    public class Course : Auditable
     {
-        public Guid Id { get; set; }
         public string Name { get; set; }
         public Guid TeacherId {  get; set; }
         public Guid SubjectId { get; set; }

@@ -1,8 +1,7 @@
 ﻿namespace LMS.Domen.Entities
 {
-    public class Grade
+    public class Grade : Auditable
     {
-        public Guid Id { get; set; }
         public float GradeValue { get; set; }
         public Guid DedlineId { get; set; }
         public Guid StudentId { get; set; }

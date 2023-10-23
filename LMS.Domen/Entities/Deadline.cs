@@ -1,8 +1,7 @@
 ﻿namespace LMS.Domen.Entities
 {
-    public class Deadline
+    public class Deadline : Auditable
     {
-        public Guid Id { get; set; }
         public float MaxGrade { get; set; }
         public DateTime StartDate { get; set; }
 
@@ -10,7 +9,6 @@
         /// StartDate dan malum vaqt o'tadi 24 soat yoki 48,96
         /// </summary>
         public DateTime ExpiredDate { get; set; }
-        public DateTime CreatedDate { get; set; }
         public Guid CourseId { get; set; }
 
         public Course? Course { get; set; }

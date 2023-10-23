@@ -1,8 +1,7 @@
 ﻿namespace LMS.Domen.Entities
 {
-    public class Lesson
+    public class Lesson:Auditable
     {
-        public Guid Id { get; set; }
         public string Name { get; set; }
         public string Lecture { get; set; }
         public DateTime Date { get; set; }
