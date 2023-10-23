@@ -1,8 +1,7 @@
 ﻿namespace LMS.Domen.Entities;
 
-public class Group
+public class Group : Auditable
 {
-    public Guid Id { get; set; }
     public string Name { get; set; }
     public int Level { get; set; }
 
