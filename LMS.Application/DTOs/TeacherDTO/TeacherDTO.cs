@@ -1,8 +1,9 @@
-﻿using LMS.Domen.Enums;
+﻿using LMS.Domen.Entities;
+using LMS.Domen.Enums;
 
 namespace LMS.Application.DTOs;
 
-public record StudentForModification(
+public record TeacherDTO(
     Guid id,
     string fullName,
     DateTime birthdate,
@@ -10,5 +11,5 @@ public record StudentForModification(
     string address,
     string addressTemporary,
     string username,
-    Guid groupId
+    ICollection<Course>? courses
     );
