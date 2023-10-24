@@ -1,6 +1,7 @@
 ﻿namespace LMS.Application.DTOs;
 
 public record DeadLineDTO(
+    Guid id,
     float maxGrade,
     DateTime startDate,
     DateTime expiredDate,
