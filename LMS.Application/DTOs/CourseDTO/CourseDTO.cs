@@ -2,10 +2,10 @@
 
 public record CourseDTO(
     Guid id,
-    string name
-    //SubjectDTO? subject,
+    string name,
+    SubjectDTO? subject,
     //TeacherDTO? teacher,
-    //ICollection<LessonDTO> lessons,
-    //ICollection<GroupDTO> groups,
-    //ICollection<DeadlineDTO> deadlines
+    ICollection<LessonDTO> lessons,
+    ICollection<GroupDTO> groups,
+    ICollection<DeadLineDTO> deadlines
     );
