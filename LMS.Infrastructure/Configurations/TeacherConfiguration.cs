@@ -11,6 +11,13 @@ namespace LMS.Infrastructure.Configurations
             builder.HasKey(teacher => teacher.Id);
 
             builder.Property(teacher => teacher.FullName)
+                .HasMaxLength(50)
+                .IsRequired();
+
+            builder.Property(teacher => teacher.CreatedAt)
+                .HasDefaultValue(DateTime.Now);
+
+            builder.Property(teacher => teacher.UpdatedAt)
                 .IsRequired();
           
             builder.Property(teacher => teacher.Birthdate)
@@ -20,7 +27,11 @@ namespace LMS.Infrastructure.Configurations
                 .IsRequired();
             
             builder.Property(teacher => teacher.Address)
+                .HasMaxLength(100)
                 .IsRequired();
+
+            builder.Property(teacher => teacher.Username)
+                .HasMaxLength(50);
             
             builder.Property(teacher => teacher.AddressTemporary)
                 .IsRequired();

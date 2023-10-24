@@ -10,9 +10,16 @@ public class GroupConfiguration : IEntityTypeConfiguration<Group>
     {
         builder.HasKey(group => group.Id);
 
+
+        builder.Property(group => group.CreatedAt)
+         .HasDefaultValue(DateTime.Now);
+
+        builder.Property(group => group.UpdatedAt)
+            .IsRequired();
+
         builder.Property(group => group.Name)
             .HasMaxLength(20)
-            .IsRequired(true);
+            .IsRequired();
 
         builder.Property(group => group.Level)
             .HasDefaultValue(1);

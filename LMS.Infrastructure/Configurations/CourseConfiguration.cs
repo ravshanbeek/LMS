@@ -14,6 +14,12 @@ namespace LMS.Infrastructure.Configurations
                 .IsRequired()
                 .HasMaxLength(15);
 
+            builder.Property(course => course.CreatedAt)
+                .HasDefaultValue(DateTime.Now);
+
+            builder.Property(course => course.UpdatedAt)
+                .IsRequired();
+
             builder.HasMany(course => course.Lessons)
                 .WithOne(lesson =>lesson.Course)
                 .HasForeignKey(lesson => lesson.CourseId)

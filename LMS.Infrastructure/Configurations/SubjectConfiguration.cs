@@ -11,6 +11,13 @@ namespace LMS.Infrastructure.Configurations
             builder.HasKey(subject => subject.Id);
 
             builder.Property(subject => subject.Name)
+                .HasMaxLength(100)
+                .IsRequired();
+
+            builder.Property(subject => subject.CreatedAt)
+                .HasDefaultValue(DateTime.Now);
+
+            builder.Property(subject => subject.UpdatedAt)
                 .IsRequired();
 
             builder.HasMany(subject => subject.Courses)

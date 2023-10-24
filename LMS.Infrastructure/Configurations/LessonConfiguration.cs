@@ -11,10 +11,19 @@ namespace LMS.Infrastructure.Configurations
             builder.HasKey(lesson => lesson.Id);
 
             builder.Property(lesson => lesson.Name)
-                .IsRequired()
-                .HasMaxLength(100);
+                .HasMaxLength(100)
+                .IsRequired();
 
+            builder.Property(lesson => lesson.CreatedAt)
+                .HasDefaultValue(DateTime.Now);
+
+            builder.Property(lesson => lesson.UpdatedAt)
+                .IsRequired();
+            
             builder.Property(lesson => lesson.Date)
+                .IsRequired();
+            
+            builder.Property(lesson => lesson.CourseId)
                 .IsRequired();
 
             builder.HasMany(lesson => lesson.NBs)
