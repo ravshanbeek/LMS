@@ -11,15 +11,27 @@ namespace LMS.Infrastructure.Configurations
             builder.HasKey(student => student.Id);
 
             builder.Property(student => student.FullName)
-                .IsRequired()
-                .HasMaxLength(50);
+                .HasMaxLength(50)
+                .IsRequired();
+
+            builder.Property(student => student.CreatedAt)
+                .HasDefaultValue(DateTime.Now);
+
+            builder.Property(student => student.UpdatedAt)
+                .IsRequired();
 
             builder.Property(student => student.Gender)
                 .IsRequired();
 
             builder.Property(student => student.Address)
-                .IsRequired()
-                .HasMaxLength(100);
+                .HasMaxLength(100)
+                .IsRequired();
+
+            builder.Property(student => student.Username)
+                .HasMaxLength(50);
+
+            builder.Property(student => student.GroupId)
+                .IsRequired();
         }
     }
 }

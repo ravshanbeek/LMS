@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace LMS.Infrastructure.Configurations
 {
-    public class DedlineConfiguration : IEntityTypeConfiguration<Deadline>
+    public class DeadlineConfiguration : IEntityTypeConfiguration<Deadline>
     {
         public void Configure(EntityTypeBuilder<Deadline> builder)
         {
@@ -13,9 +13,11 @@ namespace LMS.Infrastructure.Configurations
             builder.Property(dedline => dedline.MaxGrade)
                 .IsRequired();
 
-            builder.Property(dedline => dedline.CreatedDate)
-                .IsRequired()
+            builder.Property(dedline => dedline.CreatedAt)
                 .HasDefaultValue(DateTime.Now);
+
+            builder.Property(dedline => dedline.UpdatedAt)
+                .IsRequired();
             
             builder.Property(dedline => dedline.StartDate)
                 .IsRequired();

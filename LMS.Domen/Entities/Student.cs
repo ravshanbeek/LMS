@@ -12,8 +12,7 @@ public class Student : Auditable
     public string Username { get; set; }
     public string Salt { get; set; }
     public string HashedPassword { get; set; }
-
     public Guid GroupId { get; set; }
+
     public Group? Group { get; set; }
 }
-x

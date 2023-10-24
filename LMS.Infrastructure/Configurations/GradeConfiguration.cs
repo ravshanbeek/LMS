@@ -10,8 +10,19 @@ namespace LMS.Infrastructure.Configurations
         {
             builder.HasKey(grade => grade.Id);
 
+            builder.Property(grade => grade.CreatedAt)
+             .HasDefaultValue(DateTime.Now);
+
+            builder.Property(grade => grade.UpdatedAt)
+                .IsRequired();
+
+            builder.Property(grade => grade.DedlineId)
+                .IsRequired();
+
+            builder.Property(grade => grade.StudentId)
+                .IsRequired();
+
             builder.Property(grade => grade.GradeValue)
-                .IsRequired()
                 .HasDefaultValue(0);
         }
     }
