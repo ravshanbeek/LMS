@@ -1,4 +1,5 @@
 ﻿using LMS.Application.DTOs;
+using LMS.Domen.Entities;
 using LMS.Infrastructure.Repositories;
 
 namespace LMS.Application.Services.Subjects
@@ -37,7 +38,6 @@ namespace LMS.Application.Services.Subjects
         public async ValueTask<SubjectDTO> RemoveSubjectAsync(Guid subjectId)
         {
             var storageSubject = await _subjectRepository.SelectByIdAsync(subjectId);
-            //validate
             var deletedSubject = await _subjectRepository.DeleteAsync(storageSubject);
 
             return _subjectFactory.MapToSubjectDTO(deletedSubject);
