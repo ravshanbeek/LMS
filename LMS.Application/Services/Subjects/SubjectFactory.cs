@@ -25,7 +25,7 @@ public class SubjectFactory : ISubjectFactory
         return new SubjectDTO(
             subject.Id,
             subject.Name,
-            null//subject.Courses
+            null//subject.Courses;
             );
     }
 }
