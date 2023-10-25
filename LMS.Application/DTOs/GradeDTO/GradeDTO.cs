@@ -3,6 +3,8 @@
 public record GradeDTO(
     Guid id,
     float gradeValue,
-    Guid dedlineId,
-    Guid studentId
+    DeadlineDTO dedline,
+    StudentDTO student,
+    bool isUploaded,
+    bool isRated
     );

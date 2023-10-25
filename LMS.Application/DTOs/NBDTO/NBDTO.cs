@@ -3,6 +3,6 @@
 public record NBDTO(
     Guid id,
     bool isAvailable,
-    Guid lessonId,
-    Guid studentId
+    LessonDTO lesson,
+    StudentDTO student
     );

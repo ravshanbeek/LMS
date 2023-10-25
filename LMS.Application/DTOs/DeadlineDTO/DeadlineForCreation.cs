@@ -2,6 +2,6 @@
 
 public record DeadlineForCreation(
     float maxGrade,
-    DateTime startDate,
+    DateTime expiredDate,
     Guid courseId
     );

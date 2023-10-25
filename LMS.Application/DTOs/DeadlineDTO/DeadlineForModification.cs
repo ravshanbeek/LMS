@@ -3,7 +3,6 @@
 public record DeadlineForModification(
     Guid id,
     float maxGrade,
-    DateTime startDate,
-    Guid courseId,
-    ICollection<Guid>? grades
+    DateTime expiredDate,
+    Guid courseId
     );
