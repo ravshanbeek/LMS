@@ -5,5 +5,6 @@ public record DeadlineDTO(
     float maxGrade,
     DateTime expiredDate,
     CourseDTO course,
+    string filePath,
     ICollection<TaskGradeDTO> taskGrades
     );

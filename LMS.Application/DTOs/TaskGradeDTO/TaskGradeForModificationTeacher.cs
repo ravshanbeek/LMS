@@ -3,6 +3,7 @@
 public record TaskGradeForModificationTeacher(
     Guid id,
     float gradeValue,
+    string filePath,
     Guid dedlineId,
     Guid studentId,
     bool isUploaded,
