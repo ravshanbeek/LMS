@@ -1,5 +1,4 @@
 ﻿using LMS.Application.DTOs;
-using LMS.Domen.Entities;
 using LMS.Infrastructure.Repositories;
 
 namespace LMS.Application.Services.Subjects
@@ -7,78 +6,53 @@ namespace LMS.Application.Services.Subjects
     public class SubjectService : ISubjectService
     {
         private readonly ISubjectRepository _subjectRepository;
+        private readonly ISubjectFactory _subjectFactory;
 
-        public SubjectService(ISubjectRepository subjectRepository)
+        public SubjectService(
+            ISubjectRepository subjectRepository, 
+            ISubjectFactory subjectFactory)
         {
             _subjectRepository = subjectRepository;
+            _subjectFactory = subjectFactory;
         }
 
         public async ValueTask<SubjectDTO> CreateSubjectAsync(SubjectForCreation subject)
         {
-            var addedSubject = await _subjectRepository.InsertAsync(
-                new Subject {
-                    Name = subject.name,
-                });
+            var newSubject = _subjectFactory.MapToSubject(subject);
+            var addedSubject = await _subjectRepository.InsertAsync(newSubject);
 
-            return new SubjectDTO(
-                addedSubject.Id,
-                addedSubject.Name,
-                null//addedSubject.Courses
-            );
+            return  _subjectFactory.MapToSubjectDTO(addedSubject);
         }
 
         public async ValueTask<SubjectDTO> ModifySubjectAsync(SubjectForModification subjectForModification)
         {
             var storageSubject = await _subjectRepository.SelectByIdAsync(subjectForModification.id);
+            _subjectFactory.MapToSubject(storageSubject, subjectForModification);
+            var updatedSubject = await _subjectRepository.UpdateAsync(storageSubject);
 
-            var updatedSubject = await _subjectRepository.UpdateAsync(new Subject
-            {
-                Id = subjectForModification.id,
-                Name = subjectForModification.name,
-                Courses = null,// subjectForModification.courses
-                UpdatedAt = DateTime.Now
-            });
-
-            return new SubjectDTO(
-                updatedSubject.Id,
-                updatedSubject.Name,
-                null//updatedSubject.Courses
-                );
+            return _subjectFactory.MapToSubjectDTO(updatedSubject);
         }
 
         public async ValueTask<SubjectDTO> RemoveSubjectAsync(Guid subjectId)
         {
             var storageSubject = await _subjectRepository.SelectByIdAsync(subjectId);
-
             var deletedSubject = await _subjectRepository.DeleteAsync(storageSubject);
 
-            return new SubjectDTO(
-                deletedSubject.Id,
-                deletedSubject.Name,
-                null//deletedSubject.Courses
-                );
+            return _subjectFactory.MapToSubjectDTO(deletedSubject);
         }
 
         public async ValueTask<SubjectDTO> RetrieveSubjectByIdAsync(Guid subjectId)
         {
             var storageSubject = await _subjectRepository.SelectByIdAsync(subjectId);
 
-            return new SubjectDTO(
-                storageSubject.Id,
-                storageSubject.Name,
-                null//storageSubject.Courses
-                );
+            return _subjectFactory.MapToSubjectDTO(storageSubject);
         }
 
         public IQueryable<SubjectDTO> RetrieveSubjects()
         {
             var subjects = _subjectRepository.SelectAll();
 
-            return subjects.Select(subject => new SubjectDTO(
-                subject.Id,
-                subject.Name,
-                null//subject.Courses
-                ));
+            return subjects.Select(subject => _subjectFactory.MapToSubjectDTO(subject));
         }
     }
 }

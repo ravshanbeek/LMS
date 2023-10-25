@@ -22,6 +22,7 @@ public static class ServiceCollectionExtentions
     public static IServiceCollection AddApplication(this IServiceCollection services)
     {
         services.AddScoped<ISubjectService,SubjectService>();
+        services.AddTransient<ISubjectFactory,SubjectFactory>();
 
         return services;
     }
