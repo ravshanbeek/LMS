@@ -10,5 +10,5 @@ public record StudentDTO(
     string address,
     string addressTemporary,
     string username,
-    Guid groupId
+    GroupDTO group
     );

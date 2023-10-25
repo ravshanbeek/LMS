@@ -4,8 +4,8 @@ public record CourseDTO(
     Guid id,
     string name,
     SubjectDTO? subject,
-    //TeacherDTO? teacher,
+    TeacherDTO? teacher,
     ICollection<LessonDTO> lessons,
     ICollection<GroupDTO> groups,
-    ICollection<DeadLineDTO> deadlines
+    ICollection<DeadlineDTO> deadlines
     );

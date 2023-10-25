@@ -1,6 +1,6 @@
 ﻿namespace LMS.Application.DTOs;
 
-public record GradeForModification(
+public record GradeForModificationTeacher(
     Guid id,
     float gradeValue,
     Guid dedlineId,
