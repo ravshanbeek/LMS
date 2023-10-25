@@ -6,6 +6,6 @@ public record GroupDTO(
     Guid id,
     string name,
     int level,
-    ICollection<Student>? students,
-    ICollection<Course>? courses
+    ICollection<StudentDTO>? students,
+    ICollection<CourseDTO>? courses
     );

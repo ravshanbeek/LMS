@@ -5,5 +5,5 @@ namespace LMS.Application.DTOs;
 public record SubjectDTO(
     Guid id,
     string name,
-    ICollection<Course>? courses
+    ICollection<CourseDTO>? courses
     );

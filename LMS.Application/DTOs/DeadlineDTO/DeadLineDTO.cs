@@ -5,5 +5,5 @@ public record DeadlineDTO(
     float maxGrade,
     DateTime expiredDate,
     CourseDTO course,
-    ICollection<GradeDTO> grades
+    ICollection<TaskGradeDTO> taskGrades
     );

@@ -10,6 +10,4 @@ public record TeacherForCreation(
     string address ,
     string addressTemporary ,
     string username
-    //string salt ,
-    //string hashedPassword
     );

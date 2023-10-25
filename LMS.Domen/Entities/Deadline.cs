@@ -8,6 +8,6 @@
         public Guid CourseId { get; set; }
 
         public Course? Course { get; set; }
-        public ICollection<Grade>? Grades { get; set; }
+        public ICollection<TaskGrade>? TaskGrades { get; set; }
     }
 }

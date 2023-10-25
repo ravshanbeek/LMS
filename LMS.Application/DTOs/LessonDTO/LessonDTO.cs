@@ -3,7 +3,8 @@
 public record LessonDTO(
     Guid id,
     string name,
-    string lecture,//aniqmas sal boshqacha bo'lishiyam mumkin
+    string lecture,
     DateTime date,
-    CourseDTO course
+    CourseDTO course,
+    ICollection<NBDTO> nbs
     );

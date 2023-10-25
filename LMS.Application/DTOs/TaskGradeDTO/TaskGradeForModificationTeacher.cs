@@ -1,10 +1,10 @@
 ﻿namespace LMS.Application.DTOs;
 
-public record GradeDTO(
+public record TaskGradeForModificationTeacher(
     Guid id,
     float gradeValue,
-    DeadlineDTO dedline,
-    StudentDTO student,
+    Guid dedlineId,
+    Guid studentId,
     bool isUploaded,
     bool isRated
     );

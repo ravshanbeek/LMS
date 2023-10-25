@@ -3,7 +3,8 @@
 public record LessonForModification(
     Guid id,
     string name,
-    string lecture,//aniqmas sal boshqacha bo'lishiyam mumkin
+    string lecture,
     DateTime date,
-    Guid courseId
+    Guid courseId,
+    ICollection<Guid>? nbs
     );

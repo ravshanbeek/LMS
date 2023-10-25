@@ -11,5 +11,5 @@ public record TeacherDTO(
     string address,
     string addressTemporary,
     string username,
-    ICollection<Course>? courses
+    ICollection<CourseDTO>? courses
     );

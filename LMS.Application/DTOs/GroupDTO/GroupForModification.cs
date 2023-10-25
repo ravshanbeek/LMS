@@ -6,6 +6,6 @@ public record GroupForModification(
     Guid id,
     string name,
     int level,
-    ICollection<Student>? students,
-    ICollection<Course>? courses
+    ICollection<Guid>? students,
+    ICollection<Guid>? courses
     );

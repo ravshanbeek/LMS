@@ -9,7 +9,5 @@ public record StudentForCreation(
     string address,
     string addressTemporary,
     string username,
-    //string salt, // balki xatodur
-    //string hashedPassword,
     Guid groupId
     );
