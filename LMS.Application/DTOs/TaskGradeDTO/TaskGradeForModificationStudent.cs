@@ -2,7 +2,7 @@
 
 public record TaskGradeForModificationStudent(
     Guid id,
-    string filePath
+    string filePath,
     Guid dedlineId,
-    Guid studentId,
+    Guid studentId
     );
