@@ -2,7 +2,7 @@
 
 public record LessonForCreation(
     string name,
-    string lecture,//aniqmas sal boshqacha bo'lishiyam mumkin
+    string lecture,
     DateTime date,
     Guid courseId
     );

@@ -19,15 +19,12 @@ namespace LMS.Infrastructure.Configurations
             builder.Property(dedline => dedline.UpdatedAt)
                 .IsRequired();
             
-            builder.Property(dedline => dedline.StartDate)
-                .IsRequired();
-            
             builder.Property(dedline => dedline.ExpiredDate)
                 .IsRequired();
 
-            builder.HasMany(dedline => dedline.Grades)
-                .WithOne(grade => grade.Deadline)
-                .HasForeignKey(grade => grade.DedlineId)
+            builder.HasMany(dedline => dedline.TaskGrades)
+                .WithOne(taskGrade => taskGrade.Deadline)
+                .HasForeignKey(taskGrade => taskGrade.DedlineId)
                 .OnDelete(DeleteBehavior.Cascade);
         }
     }

@@ -11,5 +11,5 @@ public record TeacherForModification(
     string address,
     string addressTemporary,
     string username,
-    ICollection<Course>? courses
+    ICollection<Guid>? courses
     );

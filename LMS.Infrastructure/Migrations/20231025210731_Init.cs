@@ -18,7 +18,7 @@ namespace LMS.Infrastructure.Migrations
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
                     Level = table.Column<int>(type: "int", nullable: false, defaultValue: 1),
-                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 10, 25, 1, 17, 36, 667, DateTimeKind.Local).AddTicks(8878)),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 10, 26, 2, 7, 31, 660, DateTimeKind.Local).AddTicks(3170)),
                     UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
@@ -32,7 +32,7 @@ namespace LMS.Infrastructure.Migrations
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 10, 25, 1, 17, 36, 669, DateTimeKind.Local).AddTicks(5892)),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 10, 26, 2, 7, 31, 662, DateTimeKind.Local).AddTicks(1094)),
                     UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
@@ -53,7 +53,7 @@ namespace LMS.Infrastructure.Migrations
                     Username = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     Salt = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     HashedPassword = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 10, 25, 1, 17, 36, 669, DateTimeKind.Local).AddTicks(8468)),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 10, 26, 2, 7, 31, 662, DateTimeKind.Local).AddTicks(7018)),
                     UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
@@ -75,7 +75,7 @@ namespace LMS.Infrastructure.Migrations
                     Salt = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     HashedPassword = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     GroupId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 10, 25, 1, 17, 36, 669, DateTimeKind.Local).AddTicks(3977)),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 10, 26, 2, 7, 31, 661, DateTimeKind.Local).AddTicks(8912)),
                     UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
@@ -97,7 +97,7 @@ namespace LMS.Infrastructure.Migrations
                     Name = table.Column<string>(type: "nvarchar(15)", maxLength: 15, nullable: false),
                     TeacherId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     SubjectId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 10, 25, 1, 17, 36, 666, DateTimeKind.Local).AddTicks(5088)),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 10, 26, 2, 7, 31, 659, DateTimeKind.Local).AddTicks(2033)),
                     UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
@@ -147,10 +147,10 @@ namespace LMS.Infrastructure.Migrations
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     MaxGrade = table.Column<float>(type: "real", nullable: false),
-                    StartDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ExpiredDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    FilePath = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CourseId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 10, 25, 1, 17, 36, 667, DateTimeKind.Local).AddTicks(205)),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 10, 26, 2, 7, 31, 659, DateTimeKind.Local).AddTicks(7873)),
                     UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
@@ -173,7 +173,7 @@ namespace LMS.Infrastructure.Migrations
                     Lecture = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Date = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CourseId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 10, 25, 1, 17, 36, 668, DateTimeKind.Local).AddTicks(8856)),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 10, 26, 2, 7, 31, 660, DateTimeKind.Local).AddTicks(6709)),
                     UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
@@ -188,27 +188,30 @@ namespace LMS.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Grade",
+                name: "TaskGrade",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     GradeValue = table.Column<float>(type: "real", nullable: false, defaultValue: 0f),
                     DedlineId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     StudentId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 10, 25, 1, 17, 36, 667, DateTimeKind.Local).AddTicks(6407)),
+                    FilePath = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    IsUploaded = table.Column<bool>(type: "bit", nullable: false),
+                    IsRated = table.Column<bool>(type: "bit", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 10, 26, 2, 7, 31, 662, DateTimeKind.Local).AddTicks(4160)),
                     UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Grade", x => x.Id);
+                    table.PrimaryKey("PK_TaskGrade", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Grade_Deadline_DedlineId",
+                        name: "FK_TaskGrade_Deadline_DedlineId",
                         column: x => x.DedlineId,
                         principalTable: "Deadline",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Grade_Student_StudentId",
+                        name: "FK_TaskGrade_Student_StudentId",
                         column: x => x.StudentId,
                         principalTable: "Student",
                         principalColumn: "Id",
@@ -223,7 +226,7 @@ namespace LMS.Infrastructure.Migrations
                     IsAvailable = table.Column<bool>(type: "bit", nullable: false, defaultValue: true),
                     LessonId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     StudentId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 10, 25, 1, 17, 36, 669, DateTimeKind.Local).AddTicks(2257)),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 10, 26, 2, 7, 31, 661, DateTimeKind.Local).AddTicks(6758)),
                     UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
@@ -264,16 +267,6 @@ namespace LMS.Infrastructure.Migrations
                 column: "CourseId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Grade_DedlineId",
-                table: "Grade",
-                column: "DedlineId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Grade_StudentId",
-                table: "Grade",
-                column: "StudentId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Lesson_CourseId",
                 table: "Lesson",
                 column: "CourseId");
@@ -292,6 +285,16 @@ namespace LMS.Infrastructure.Migrations
                 name: "IX_Student_GroupId",
                 table: "Student",
                 column: "GroupId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_TaskGrade_DedlineId",
+                table: "TaskGrade",
+                column: "DedlineId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_TaskGrade_StudentId",
+                table: "TaskGrade",
+                column: "StudentId");
         }
 
         /// <inheritdoc />
@@ -301,16 +304,16 @@ namespace LMS.Infrastructure.Migrations
                 name: "CourseGroup");
 
             migrationBuilder.DropTable(
-                name: "Grade");
-
-            migrationBuilder.DropTable(
                 name: "NB");
 
             migrationBuilder.DropTable(
-                name: "Deadline");
+                name: "TaskGrade");
 
             migrationBuilder.DropTable(
                 name: "Lesson");
+
+            migrationBuilder.DropTable(
+                name: "Deadline");
 
             migrationBuilder.DropTable(
                 name: "Student");

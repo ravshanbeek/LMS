@@ -4,5 +4,7 @@ public record DeadlineForModification(
     Guid id,
     float maxGrade,
     DateTime expiredDate,
-    Guid courseId
+    Guid courseId,
+    string filePath,
+    ICollection<Guid>? tasks
     );

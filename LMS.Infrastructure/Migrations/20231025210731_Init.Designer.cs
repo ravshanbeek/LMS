@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LMS.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20231024201736_Init")]
+    [Migration("20231025210731_Init")]
     partial class Init
     {
         /// <inheritdoc />
@@ -49,7 +49,7 @@ namespace LMS.Infrastructure.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 10, 25, 1, 17, 36, 666, DateTimeKind.Local).AddTicks(5088));
+                        .HasDefaultValue(new DateTime(2023, 10, 26, 2, 7, 31, 659, DateTimeKind.Local).AddTicks(2033));
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -86,16 +86,17 @@ namespace LMS.Infrastructure.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 10, 25, 1, 17, 36, 667, DateTimeKind.Local).AddTicks(205));
+                        .HasDefaultValue(new DateTime(2023, 10, 26, 2, 7, 31, 659, DateTimeKind.Local).AddTicks(7873));
 
                     b.Property<DateTime>("ExpiredDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("FilePath")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<float>("MaxGrade")
                         .HasColumnType("real");
-
-                    b.Property<DateTime>("StartDate")
-                        .HasColumnType("datetime2");
 
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime2");
@@ -107,40 +108,6 @@ namespace LMS.Infrastructure.Migrations
                     b.ToTable("Deadline");
                 });
 
-            modelBuilder.Entity("LMS.Domen.Entities.Grade", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 10, 25, 1, 17, 36, 667, DateTimeKind.Local).AddTicks(6407));
-
-                    b.Property<Guid>("DedlineId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<float>("GradeValue")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("real")
-                        .HasDefaultValue(0f);
-
-                    b.Property<Guid>("StudentId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime>("UpdatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("DedlineId");
-
-                    b.HasIndex("StudentId");
-
-                    b.ToTable("Grade");
-                });
-
             modelBuilder.Entity("LMS.Domen.Entities.Group", b =>
                 {
                     b.Property<Guid>("Id")
@@ -150,7 +117,7 @@ namespace LMS.Infrastructure.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 10, 25, 1, 17, 36, 667, DateTimeKind.Local).AddTicks(8878));
+                        .HasDefaultValue(new DateTime(2023, 10, 26, 2, 7, 31, 660, DateTimeKind.Local).AddTicks(3170));
 
                     b.Property<int>("Level")
                         .ValueGeneratedOnAdd()
@@ -182,7 +149,7 @@ namespace LMS.Infrastructure.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 10, 25, 1, 17, 36, 668, DateTimeKind.Local).AddTicks(8856));
+                        .HasDefaultValue(new DateTime(2023, 10, 26, 2, 7, 31, 660, DateTimeKind.Local).AddTicks(6709));
 
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
@@ -215,7 +182,7 @@ namespace LMS.Infrastructure.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 10, 25, 1, 17, 36, 669, DateTimeKind.Local).AddTicks(2257));
+                        .HasDefaultValue(new DateTime(2023, 10, 26, 2, 7, 31, 661, DateTimeKind.Local).AddTicks(6758));
 
                     b.Property<bool>("IsAvailable")
                         .ValueGeneratedOnAdd()
@@ -261,7 +228,7 @@ namespace LMS.Infrastructure.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 10, 25, 1, 17, 36, 669, DateTimeKind.Local).AddTicks(3977));
+                        .HasDefaultValue(new DateTime(2023, 10, 26, 2, 7, 31, 661, DateTimeKind.Local).AddTicks(8912));
 
                     b.Property<string>("FullName")
                         .IsRequired()
@@ -306,7 +273,7 @@ namespace LMS.Infrastructure.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 10, 25, 1, 17, 36, 669, DateTimeKind.Local).AddTicks(5892));
+                        .HasDefaultValue(new DateTime(2023, 10, 26, 2, 7, 31, 662, DateTimeKind.Local).AddTicks(1094));
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -319,6 +286,50 @@ namespace LMS.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Subject");
+                });
+
+            modelBuilder.Entity("LMS.Domen.Entities.TaskGrade", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValue(new DateTime(2023, 10, 26, 2, 7, 31, 662, DateTimeKind.Local).AddTicks(4160));
+
+                    b.Property<Guid>("DedlineId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("FilePath")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<float>("GradeValue")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("real")
+                        .HasDefaultValue(0f);
+
+                    b.Property<bool>("IsRated")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsUploaded")
+                        .HasColumnType("bit");
+
+                    b.Property<Guid>("StudentId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DedlineId");
+
+                    b.HasIndex("StudentId");
+
+                    b.ToTable("TaskGrade");
                 });
 
             modelBuilder.Entity("LMS.Domen.Entities.Teacher", b =>
@@ -342,7 +353,7 @@ namespace LMS.Infrastructure.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 10, 25, 1, 17, 36, 669, DateTimeKind.Local).AddTicks(8468));
+                        .HasDefaultValue(new DateTime(2023, 10, 26, 2, 7, 31, 662, DateTimeKind.Local).AddTicks(7018));
 
                     b.Property<string>("FullName")
                         .IsRequired()
@@ -418,25 +429,6 @@ namespace LMS.Infrastructure.Migrations
                     b.Navigation("Course");
                 });
 
-            modelBuilder.Entity("LMS.Domen.Entities.Grade", b =>
-                {
-                    b.HasOne("LMS.Domen.Entities.Deadline", "Deadline")
-                        .WithMany("Grades")
-                        .HasForeignKey("DedlineId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("LMS.Domen.Entities.Student", "Student")
-                        .WithMany()
-                        .HasForeignKey("StudentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Deadline");
-
-                    b.Navigation("Student");
-                });
-
             modelBuilder.Entity("LMS.Domen.Entities.Lesson", b =>
                 {
                     b.HasOne("LMS.Domen.Entities.Course", "Course")
@@ -478,6 +470,25 @@ namespace LMS.Infrastructure.Migrations
                     b.Navigation("Group");
                 });
 
+            modelBuilder.Entity("LMS.Domen.Entities.TaskGrade", b =>
+                {
+                    b.HasOne("LMS.Domen.Entities.Deadline", "Deadline")
+                        .WithMany("TaskGrades")
+                        .HasForeignKey("DedlineId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("LMS.Domen.Entities.Student", "Student")
+                        .WithMany()
+                        .HasForeignKey("StudentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Deadline");
+
+                    b.Navigation("Student");
+                });
+
             modelBuilder.Entity("LMS.Domen.Entities.Course", b =>
                 {
                     b.Navigation("Deadlines");
@@ -487,7 +498,7 @@ namespace LMS.Infrastructure.Migrations
 
             modelBuilder.Entity("LMS.Domen.Entities.Deadline", b =>
                 {
-                    b.Navigation("Grades");
+                    b.Navigation("TaskGrades");
                 });
 
             modelBuilder.Entity("LMS.Domen.Entities.Group", b =>
