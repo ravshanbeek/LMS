@@ -12,9 +12,9 @@ namespace LMS.Application.Services.Subjects
         public SubjectService(ISubjectRepository subjectRepository)
             => _subjectRepository = subjectRepository;
 
-        public async ValueTask<SubjectDTO> CreateSubjectAsync(SubjectForCreation subject)
+        public async ValueTask<SubjectDTO> CreateSubjectAsync(SubjectForCreation subjectForCreation)
         {
-            var newSubject = subject.Adapt<Subject>();
+            var newSubject = subjectForCreation.Adapt<Subject>();
             var addedSubject = await _subjectRepository.InsertAsync(newSubject);
 
             return addedSubject.Adapt<SubjectDTO>();
