@@ -1,6 +1,6 @@
 ﻿using LMS.Application.DTOs;
 
-namespace LMS.Application.Services.Deadline;
+namespace LMS.Application.Services.Deadlines;
 
 public interface IDeadlineService
 {
