@@ -2,6 +2,6 @@
 
 namespace LMS.Infrastructure.Repositories;
 
-public interface IDedlineRepository : IGenericRepository<Deadline,Guid>
+public interface IDeadlineRepository : IGenericRepository<Deadline,Guid>
 {
 }
