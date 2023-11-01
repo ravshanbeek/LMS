@@ -9,11 +9,8 @@ namespace LMS.Application.Services.Subjects
     {
         private readonly ISubjectRepository _subjectRepository;
 
-        public SubjectService(
-            ISubjectRepository subjectRepository)
-        {
-            _subjectRepository = subjectRepository;
-        }
+        public SubjectService(ISubjectRepository subjectRepository)
+            => _subjectRepository = subjectRepository;
 
         public async ValueTask<SubjectDTO> CreateSubjectAsync(SubjectForCreation subject)
         {
@@ -36,6 +33,7 @@ namespace LMS.Application.Services.Subjects
         public async ValueTask<SubjectDTO> RemoveSubjectAsync(Guid subjectId)
         {
             var storageSubject = await _subjectRepository.SelectByIdAsync(subjectId);
+            //validate
             var deletedSubject = await _subjectRepository.DeleteAsync(storageSubject);
 
             return deletedSubject.Adapt<SubjectDTO>();
