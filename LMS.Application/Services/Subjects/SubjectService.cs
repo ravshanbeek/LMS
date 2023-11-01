@@ -1,38 +1,36 @@
 ﻿using LMS.Application.DTOs;
 using LMS.Domen.Entities;
 using LMS.Infrastructure.Repositories;
+using Mapster;
 
 namespace LMS.Application.Services.Subjects
 {
     public class SubjectService : ISubjectService
     {
         private readonly ISubjectRepository _subjectRepository;
-        private readonly ISubjectFactory _subjectFactory;
 
         public SubjectService(
-            ISubjectRepository subjectRepository, 
-            ISubjectFactory subjectFactory)
+            ISubjectRepository subjectRepository)
         {
             _subjectRepository = subjectRepository;
-            _subjectFactory = subjectFactory;
         }
 
         public async ValueTask<SubjectDTO> CreateSubjectAsync(SubjectForCreation subject)
         {
-            var newSubject = _subjectFactory.MapToSubject(subject);
+            var newSubject = subject.Adapt<Subject>();
             var addedSubject = await _subjectRepository.InsertAsync(newSubject);
 
-            return  _subjectFactory.MapToSubjectDTO(addedSubject);
+            return addedSubject.Adapt<SubjectDTO>();
         }
 
         public async ValueTask<SubjectDTO> ModifySubjectAsync(SubjectForModification subjectForModification)
         {
             var storageSubject = await _subjectRepository.SelectByIdAsync(subjectForModification.id);
             //validate
-            _subjectFactory.MapToSubject(storageSubject, subjectForModification);
+            storageSubject = subjectForModification.Adapt(storageSubject);
             var updatedSubject = await _subjectRepository.UpdateAsync(storageSubject);
 
-            return _subjectFactory.MapToSubjectDTO(updatedSubject);
+            return updatedSubject.Adapt<SubjectDTO>();
         }
 
         public async ValueTask<SubjectDTO> RemoveSubjectAsync(Guid subjectId)
@@ -40,7 +38,7 @@ namespace LMS.Application.Services.Subjects
             var storageSubject = await _subjectRepository.SelectByIdAsync(subjectId);
             var deletedSubject = await _subjectRepository.DeleteAsync(storageSubject);
 
-            return _subjectFactory.MapToSubjectDTO(deletedSubject);
+            return deletedSubject.Adapt<SubjectDTO>();
         }
 
         public async ValueTask<SubjectDTO> RetrieveSubjectByIdAsync(Guid subjectId)
@@ -48,7 +46,7 @@ namespace LMS.Application.Services.Subjects
             var storageSubject = await _subjectRepository.SelectByIdAsync(subjectId);
             //validate
 
-            return _subjectFactory.MapToSubjectDTO(storageSubject);
+            return storageSubject.Adapt<SubjectDTO>();
         }
 
         public IQueryable<SubjectDTO> RetrieveSubjects()
@@ -56,7 +54,7 @@ namespace LMS.Application.Services.Subjects
             var subjects = _subjectRepository.SelectAll();
             //validate
 
-            return subjects.Select(subject => _subjectFactory.MapToSubjectDTO(subject));
+            return subjects.Select(subject => subject.Adapt<SubjectDTO>());
         }
     }
 }
