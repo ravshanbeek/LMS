@@ -4,7 +4,7 @@ namespace LMS.Application.Services.Subjects;
 
 public interface ISubjectService
 {
-    ValueTask<SubjectDTO> CreateSubjectAsync(SubjectForCreation subject);
+    ValueTask<SubjectDTO> CreateSubjectAsync(SubjectForCreation subjectForCreation);
     IQueryable<SubjectDTO> RetrieveSubjects();
     ValueTask<SubjectDTO> RetrieveSubjectByIdAsync(Guid subjectId);
     ValueTask<SubjectDTO> ModifySubjectAsync(SubjectForModification subjectForModification);
