@@ -5,7 +5,7 @@ using Mapster;
 
 namespace LMS.Application.Services.Students;
 
-public class StudentService : IStudentService
+public partial class StudentService : IStudentService
 {
     private readonly IStudentRepository _studentRepository;
 
@@ -14,6 +14,8 @@ public class StudentService : IStudentService
 
     public async ValueTask<StudentDTO> CreateStudentAsync(StudentForCreation studentForCreation)
     {
+        ValidateStudentForCreationDTO(studentForCreation);
+
         var student = studentForCreation.Adapt<Student>();
         var addedStudent = await _studentRepository.InsertAsync(student);
 
@@ -23,7 +25,8 @@ public class StudentService : IStudentService
     public async ValueTask<StudentDTO> ModifyStudentAsync(StudentForModification studentForModification)
     {
         var student = await _studentRepository.SelectByIdAsync(studentForModification.id);
-        //validate
+        ValidateStorageStudent(student);
+
         student = studentForModification.Adapt(student);
         var updatedStudent = await _studentRepository.UpdateAsync(student);
 
