@@ -5,7 +5,7 @@ using Mapster;
 
 namespace LMS.Application.Services.Subjects
 {
-    public class SubjectService : ISubjectService
+    public partial class SubjectService : ISubjectService
     {
         private readonly ISubjectRepository _subjectRepository;
 
@@ -22,8 +22,9 @@ namespace LMS.Application.Services.Subjects
 
         public async ValueTask<SubjectDTO> ModifySubjectAsync(SubjectForModification subjectForModification)
         {
+            ValidateSubjectForModificationDTO(subjectForModification);
             var storageSubject = await _subjectRepository.SelectByIdAsync(subjectForModification.id);
-            //validate
+
             storageSubject = subjectForModification.Adapt(storageSubject);
             var updatedSubject = await _subjectRepository.UpdateAsync(storageSubject);
 

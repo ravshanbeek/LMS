@@ -1,14 +1,15 @@
 ﻿using FluentValidation;
 using LMS.Application.DTOs;
+using System.Linq;
 
-namespace LMS.Application.Validators;
+namespace LMS.Application.Validators.Students;
 
-public class StudentForCreationDTOValidator: AbstractValidator<StudentForCreation>
+public class StudentForModificationDTOValidator:AbstractValidator<StudentForModification>
 {
-    public StudentForCreationDTOValidator()
+    public StudentForModificationDTOValidator()
     {
         RuleFor(student => student)
-            .NotNull();
+           .NotNull();
 
         RuleFor(student => student.fullName)
             .MaximumLength(50)
@@ -17,7 +18,7 @@ public class StudentForCreationDTOValidator: AbstractValidator<StudentForCreatio
         RuleFor(student => student.gender)
             .NotEmpty();
 
-        RuleFor(student => student.address) 
+        RuleFor(student => student.address)
             .NotEmpty();
 
         RuleFor(student => student.groupId)
