@@ -1,4 +1,4 @@
-﻿using FluentValidation.Results;
+using FluentValidation.Results;
 using LMS.Application.DTOs;
 using LMS.Application.Validators.Subject;
 using LMS.Domen.Exceptions;
