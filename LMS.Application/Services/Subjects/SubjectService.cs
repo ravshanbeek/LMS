@@ -14,6 +14,8 @@ namespace LMS.Application.Services.Subjects
 
         public async ValueTask<SubjectDTO> CreateSubjectAsync(SubjectForCreation subjectForCreation)
         {
+            ValidateSubjectForCreationDTO(subjectForCreation);
+
             var newSubject = subjectForCreation.Adapt<Subject>();
             var addedSubject = await _subjectRepository.InsertAsync(newSubject);
 
