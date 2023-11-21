@@ -18,8 +18,7 @@ public class StudentForCreationDTOValidator : AbstractValidator<StudentForCreati
 
         RuleFor(student => student.gender)
             .NotEmpty()
-            .WithMessage("Invalid date")
-            ;
+            .WithMessage("Invalid date");
 
         RuleFor(student => student.address)
             .NotEmpty()
