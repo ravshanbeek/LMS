@@ -26,6 +26,7 @@ namespace LMS.Application.Services.Subjects
         {
             ValidateSubjectForModificationDTO(subjectForModification);
             var storageSubject = await _subjectRepository.SelectByIdAsync(subjectForModification.id);
+            ValidateStorageSubject(storageSubject);
 
             storageSubject = subjectForModification.Adapt(storageSubject);
             var updatedSubject = await _subjectRepository.UpdateAsync(storageSubject);
@@ -36,7 +37,7 @@ namespace LMS.Application.Services.Subjects
         public async ValueTask<SubjectDTO> RemoveSubjectAsync(Guid subjectId)
         {
             var storageSubject = await _subjectRepository.SelectByIdAsync(subjectId);
-            //validate
+            ValidateStorageSubject(storageSubject);
             var deletedSubject = await _subjectRepository.DeleteAsync(storageSubject);
 
             return deletedSubject.Adapt<SubjectDTO>();
@@ -45,7 +46,7 @@ namespace LMS.Application.Services.Subjects
         public async ValueTask<SubjectDTO> RetrieveSubjectByIdAsync(Guid subjectId)
         {
             var storageSubject = await _subjectRepository.SelectByIdAsync(subjectId);
-            //validate
+            ValidateStorageSubject(storageSubject);
 
             return storageSubject.Adapt<SubjectDTO>();
         }
@@ -53,7 +54,6 @@ namespace LMS.Application.Services.Subjects
         public IQueryable<SubjectDTO> RetrieveSubjects()
         {
             var subjects = _subjectRepository.SelectAll();
-            //validate
 
             return subjects.Select(subject => subject.Adapt<SubjectDTO>());
         }

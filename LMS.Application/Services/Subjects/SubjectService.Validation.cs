@@ -1,6 +1,7 @@
 using FluentValidation.Results;
 using LMS.Application.DTOs;
 using LMS.Application.Validators.Subject;
+using LMS.Domen.Entities;
 using LMS.Domen.Exceptions;
 using System.Text.Json;
 
@@ -14,6 +15,22 @@ namespace LMS.Application.Services.Subjects
             var validationResult = validator.Validate(subjectForCreation);
 
             ThrowIfValidationIsInvalidAsync(validationResult);
+        }
+
+        private void ValidateSubjectForModificationDTO(SubjectForModification subjectForModification)
+        {
+            SubjectForModificationValidator validator = new SubjectForModificationValidator();
+            var validationResult = validator.Validate(subjectForModification);
+
+            ThrowIfValidationIsInvalidAsync(validationResult);
+        }
+
+        private void ValidateStorageSubject(Subject subject)
+        {
+            if (subject == null)
+            {
+                throw new NotFoundException("Subject not found");
+            }
         }
 
         private void ThrowIfValidationIsInvalidAsync(ValidationResult validationResult)
