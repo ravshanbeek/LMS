@@ -19,10 +19,10 @@ namespace LMS.Infrastructure.Configurations
 
             builder.Property(lesson => lesson.UpdatedAt)
                 .IsRequired();
-            
+
             builder.Property(lesson => lesson.Date)
                 .IsRequired();
-            
+
             builder.Property(lesson => lesson.CourseId)
                 .IsRequired();
 

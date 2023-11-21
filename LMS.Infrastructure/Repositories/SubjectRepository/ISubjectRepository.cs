@@ -2,7 +2,7 @@
 
 namespace LMS.Infrastructure.Repositories;
 
-public interface ISubjectRepository : IGenericRepository<Subject,Guid>
+public interface ISubjectRepository : IGenericRepository<Subject, Guid>
 {
 
 }

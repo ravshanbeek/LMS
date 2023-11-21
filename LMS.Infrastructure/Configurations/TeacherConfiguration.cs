@@ -19,20 +19,20 @@ namespace LMS.Infrastructure.Configurations
 
             builder.Property(teacher => teacher.UpdatedAt)
                 .IsRequired();
-          
+
             builder.Property(teacher => teacher.Birthdate)
                 .IsRequired();
-         
+
             builder.Property(teacher => teacher.Gender)
                 .IsRequired();
-            
+
             builder.Property(teacher => teacher.Address)
                 .HasMaxLength(100)
                 .IsRequired();
 
             builder.Property(teacher => teacher.Username)
                 .HasMaxLength(50);
-            
+
             builder.Property(teacher => teacher.AddressTemporary)
                 .IsRequired();
 

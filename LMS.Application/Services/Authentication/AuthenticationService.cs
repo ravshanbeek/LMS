@@ -1,5 +1,4 @@
-﻿using LMS.Domen.Entities;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -23,17 +22,17 @@ namespace LMS.Application.Services.Authentication
             var key = _configuration["JWT:Key"];
 
             var securityToken = new JwtSecurityToken(
-                issuer:issuer,
-                audience:audience,
-                claims:claims,
-                expires:DateTime.Now.AddMinutes(5),
-                signingCredentials:new SigningCredentials(
-                    key:new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key)),
-                    algorithm:SecurityAlgorithms.HmacSha256)
+                issuer: issuer,
+                audience: audience,
+                claims: claims,
+                expires: DateTime.Now.AddMinutes(5),
+                signingCredentials: new SigningCredentials(
+                    key: new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key)),
+                    algorithm: SecurityAlgorithms.HmacSha256)
             );
             return new JwtSecurityTokenHandler().WriteToken(securityToken);
         }
-        
+
         public async ValueTask<string> TokenGenerateAsync()//qaysidur userDto jo'natamiz
         {
             var claims = new Claim[]

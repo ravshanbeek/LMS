@@ -2,6 +2,6 @@
 
 namespace LMS.Infrastructure.Repositories;
 
-public interface ITaskGradeRepository : IGenericRepository<TaskGrade,Guid>
+public interface ITaskGradeRepository : IGenericRepository<TaskGrade, Guid>
 {
 }

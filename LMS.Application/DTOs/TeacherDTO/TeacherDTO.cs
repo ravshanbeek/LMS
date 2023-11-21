@@ -1,5 +1,4 @@
-﻿using LMS.Domen.Entities;
-using LMS.Domen.Enums;
+﻿using LMS.Domen.Enums;
 
 namespace LMS.Application.DTOs;
 

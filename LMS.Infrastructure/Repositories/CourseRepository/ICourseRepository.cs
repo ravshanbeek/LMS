@@ -2,6 +2,6 @@
 
 namespace LMS.Infrastructure.Repositories;
 
-public interface ICourseRepository: IGenericRepository<Course,Guid>
+public interface ICourseRepository : IGenericRepository<Course, Guid>
 {
 }

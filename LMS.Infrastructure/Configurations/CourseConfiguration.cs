@@ -21,10 +21,10 @@ namespace LMS.Infrastructure.Configurations
                 .IsRequired();
 
             builder.HasMany(course => course.Lessons)
-                .WithOne(lesson =>lesson.Course)
+                .WithOne(lesson => lesson.Course)
                 .HasForeignKey(lesson => lesson.CourseId)
                 .OnDelete(DeleteBehavior.Cascade);
-            
+
             builder.HasMany(course => course.Deadlines)
                 .WithOne(dedline => dedline.Course)
                 .HasForeignKey(dedline => dedline.CourseId)

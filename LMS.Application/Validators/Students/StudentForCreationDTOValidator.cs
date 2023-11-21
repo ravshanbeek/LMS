@@ -3,7 +3,7 @@ using LMS.Application.DTOs;
 
 namespace LMS.Application.Validators;
 
-public class StudentForCreationDTOValidator: AbstractValidator<StudentForCreation>
+public class StudentForCreationDTOValidator : AbstractValidator<StudentForCreation>
 {
     public StudentForCreationDTOValidator()
     {
@@ -21,7 +21,7 @@ public class StudentForCreationDTOValidator: AbstractValidator<StudentForCreatio
             .WithMessage("Invalid date")
             ;
 
-        RuleFor(student => student.address) 
+        RuleFor(student => student.address)
             .NotEmpty()
             .WithMessage("Invalid data");
 
