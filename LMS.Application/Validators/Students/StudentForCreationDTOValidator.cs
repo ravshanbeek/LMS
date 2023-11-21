@@ -8,19 +8,25 @@ public class StudentForCreationDTOValidator: AbstractValidator<StudentForCreatio
     public StudentForCreationDTOValidator()
     {
         RuleFor(student => student)
-            .NotNull();
+            .NotNull()
+            .WithMessage("Invalid data");
 
         RuleFor(student => student.fullName)
             .MaximumLength(50)
-            .NotEmpty();
+            .NotEmpty()
+            .WithMessage("Invalid data");
 
         RuleFor(student => student.gender)
-            .NotEmpty();
+            .NotEmpty()
+            .WithMessage("Invalid date")
+            ;
 
         RuleFor(student => student.address) 
-            .NotEmpty();
+            .NotEmpty()
+            .WithMessage("Invalid data");
 
         RuleFor(student => student.groupId)
-            .NotEmpty();
+            .NotEmpty()
+            .WithMessage("Invalid date");
     }
 }

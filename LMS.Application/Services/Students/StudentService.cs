@@ -36,7 +36,7 @@ public partial class StudentService : IStudentService
     public async ValueTask<StudentDTO> RemoveStudentAsync(Guid studentId)
     {
         var student = await _studentRepository.SelectByIdAsync(studentId);
-        //validate
+        ValidateStorageStudent(student);
         var deletedStudent = await _studentRepository.DeleteAsync(student);
 
         return deletedStudent.Adapt<StudentDTO>();
@@ -45,7 +45,7 @@ public partial class StudentService : IStudentService
     public async ValueTask<StudentDTO> RetrieveStudentByIdAsync(Guid studentId)
     {
         var student = await _studentRepository.SelectByIdAsync(studentId);
-        //validate
+        ValidateStorageStudent(student);
 
         return student.Adapt<StudentDTO>();
     }
