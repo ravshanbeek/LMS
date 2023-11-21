@@ -1,27 +1,23 @@
-﻿using LMS.Application.Services.Subjects;
-using LMS.Infrastructure.Contexts;
-using Microsoft.EntityFrameworkCore;
+﻿using LMS.Application;
+using LMS.Application.Services.Authentication;
+using LMS.Infrastructure;
 
 namespace LMS.Api.Extentions;
 
 public static class ServiceCollectionExtentions
 {
-    public static IServiceCollection AddInfrastructure(
+    public static IServiceCollection AddServiceCollections(
         this IServiceCollection services,
         IConfiguration configuration)
     {
-        services.AddDbContextPool<AppDbContext>(options =>
-        {
-            //options.UseSqlite(configuration.GetConnectionString("SqlLite"));
-            options.UseSqlServer(configuration.GetConnectionString("SqlServer"));
-        });
+        services.AddInfrastructureServices(configuration);
+        services.AddApplicationServices();
 
-        return services;
-    }
+        services.AddControllers();
+        services.AddEndpointsApiExplorer();
+        services.AddSwaggerGen();
 
-    public static IServiceCollection AddApplication(this IServiceCollection services)
-    {
-        services.AddScoped<ISubjectService,SubjectService>();
+        services.AddTransient<IAuthenticationService, AuthenticationService>();
 
         return services;
     }
