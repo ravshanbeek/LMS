@@ -3,7 +3,7 @@ using LMS.Application.DTOs;
 
 namespace LMS.Application.Validators.Students;
 
-public class StudentForModificationDTOValidator:AbstractValidator<StudentForModification>
+public class StudentForModificationDTOValidator : AbstractValidator<StudentForModification>
 {
     public StudentForModificationDTOValidator()
     {

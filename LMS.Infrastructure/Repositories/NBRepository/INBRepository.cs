@@ -2,6 +2,6 @@
 
 namespace LMS.Infrastructure.Repositories;
 
-public interface INBRepository:IGenericRepository<NB,Guid>
+public interface INBRepository : IGenericRepository<NB, Guid>
 {
 }

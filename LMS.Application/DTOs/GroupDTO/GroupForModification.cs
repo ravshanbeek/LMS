@@ -1,6 +1,4 @@
-﻿using LMS.Domen.Entities;
-
-namespace LMS.Application.DTOs;
+﻿namespace LMS.Application.DTOs;
 
 public record GroupForModification(
     Guid id,

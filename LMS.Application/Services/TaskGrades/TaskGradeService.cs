@@ -18,7 +18,7 @@ public class TaskGradeService : ITaskGradeService
         //validate
         taskGrade = taskGradeForModificationStudent.Adapt(taskGrade);
         var updatedTaskGrade = await _taskGradeRepository.UpdateAsync(taskGrade);
-        
+
         return updatedTaskGrade.Adapt<TaskGradeDTO>();
     }
 

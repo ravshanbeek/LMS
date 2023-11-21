@@ -18,7 +18,7 @@ namespace LMS.Infrastructure.Configurations
 
             builder.Property(dedline => dedline.UpdatedAt)
                 .IsRequired();
-            
+
             builder.Property(dedline => dedline.ExpiredDate)
                 .IsRequired();
 

@@ -35,7 +35,7 @@ namespace LMS.Application.Services.Subjects
 
         private void ThrowIfValidationIsInvalidAsync(ValidationResult validationResult)
         {
-            if(validationResult.IsValid)
+            if (validationResult.IsValid)
             {
                 return;
             }
@@ -45,7 +45,7 @@ namespace LMS.Application.Services.Subjects
                 PropertyName = errors.PropertyName,
                 ErrorMessage = errors.ErrorMessage,
                 EttemptedValue = errors.AttemptedValue
-            })) ;
+            }));
 
             throw new ValidationException(message);
         }

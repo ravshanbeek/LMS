@@ -1,5 +1,4 @@
-﻿using FluentValidation;
-using FluentValidation.Results;
+﻿using FluentValidation.Results;
 using LMS.Application.DTOs;
 using LMS.Application.Validators;
 using LMS.Domen.Entities;
@@ -21,7 +20,7 @@ namespace LMS.Application.Services.Students
 
         private void ValidateStorageStudent(Student student)
         {
-            if(student == null)
+            if (student == null)
             {
                 throw new NotFoundException("Student not found");
             }
@@ -29,7 +28,7 @@ namespace LMS.Application.Services.Students
 
         private void ThrowValidationExceptionIfValidationIsInvalid(ValidationResult validateResult)
         {
-            if(validateResult.IsValid)
+            if (validateResult.IsValid)
             {
                 return;
             }

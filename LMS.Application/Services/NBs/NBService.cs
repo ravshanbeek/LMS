@@ -9,7 +9,7 @@ public class NBService : INBService
 {
     private readonly INBRepository _nBRepository;
 
-    public NBService(INBRepository nBRepository) 
+    public NBService(INBRepository nBRepository)
         => _nBRepository = nBRepository;
 
     public async ValueTask<NBDTO> CreateNBAsync(NBForCreation nBForCreation)

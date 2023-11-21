@@ -2,6 +2,6 @@
 
 namespace LMS.Infrastructure.Repositories;
 
-public interface ITeacherRepository:IGenericRepository<Teacher,Guid>
+public interface ITeacherRepository : IGenericRepository<Teacher, Guid>
 {
 }
